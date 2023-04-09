@@ -2,9 +2,24 @@ import pandas as pd
 from datetime import datetime
 import re
 import dateparser as dp
+import usaddress
 import openai
 
 #openai.api_key =
+
+def parse_address(row):
+    addr = usaddress.tag(row[5])
+    print(row[5])
+    try:
+        addr[0]
+        values = list(addr[0].values())
+        value_str = ', '.join(map(str, values))
+        print(value_str)
+
+    except KeyError:
+        print('error')
+
+    return row
 
 def remove_duplicates_and_non_alphanumeric(text):
     words = re.findall(r'\b\w+\b', text)
@@ -115,7 +130,7 @@ for i in range(len(df.iloc[:, 6])):
     index = df.iloc[i, 6].find("eTicket")
     if index != -1:
         df.iloc[i, 6] = df.iloc[i, 6][index + len("eTicket"):]
-    print(df.iloc[i, 6])
+    #print(df.iloc[i, 6])
 
     """response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",  # maybe put in an exception to go to another model in case of rate limiting?
@@ -129,7 +144,7 @@ for i in range(len(df.iloc[:, 6])):
     df.iloc[i,6] = cleaned_text = response['choices'][0]['message']['content']
     """
 
-    print(df.iloc[i,6])
+    #print(df.iloc[i,6])
 
 
 
@@ -140,7 +155,7 @@ df = df.apply(append_am_pm, axis=1)
 df = df.apply(parse_date, axis=1)
 
 #Parse addresses
-#df = df.apply(parse_address, axis=1)
+df = df.apply(parse_address, axis=1)
 
 # Save the modified dataframe to output.csv
 df.to_csv('output - NO AI.csv', index=False)
