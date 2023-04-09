@@ -9,7 +9,7 @@ import openai
 def remove_duplicates_and_non_alphanumeric(text):
     words = re.findall(r'\b\w+\b', text)
     unique_words = list(dict.fromkeys(words))
-    #cleaned_text = ' '.join(unique_wors)
+    cleaned_text = ' '.join(unique_words)
     return cleaned_text
 
 def append_am_pm(row):
