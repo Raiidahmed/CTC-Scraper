@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/CTC-Scraper.iml" filepath="$PROJECT_DIR$/.idea/CTC-Scraper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../CTC-Scraper-GPT/.idea/CTC-Scraper-GPT.iml" filepath="$PROJECT_DIR$/../CTC-Scraper-GPT/.idea/CTC-Scraper-GPT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Substringcut/.idea/Substringcut.iml" filepath="$PROJECT_DIR$/../Substringcut/.idea/Substringcut.iml" />
     </modules>
   </component>
 </project>
